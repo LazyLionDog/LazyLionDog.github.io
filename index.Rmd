@@ -1,0 +1,578 @@
+---
+title: "<strong><font size=20>Basic introduction of Real-time PCR and<br>LightCycler<sup>®</sup> 480 system</font></strong>"
+subtitle: "<font size=6>[Jing-yuan Chen](cjyleo@gmail.com)</font>"
+author: "<font size=6>[Graduate Institute of Veterinary Pathobiology](http://www.ivp.nchu.edu.tw/)</font>"
+date: "<font size=6>2018/8/16</font>"
+output: 
+  revealjs::revealjs_presentation:
+    incremental: false
+    theme: simple
+    css: MyCSS.css
+    self_contained: true
+    transition: "fade"
+    slidelevel: 2
+    center: true
+    fig_retina: 2
+    reveal_options:
+      slideNumber: true
+      previewLinks: true
+      
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## <b>Online slide</b>
+<!--鎖右鍵及highlight，要記得放到 body 裡面才有效的樣子-->
+<body onselectstart="return false;" ondragstart="return false;" oncontextmenu="return false;">
+
+http://ccsun.nchu.edu.tw/~d101047002/qPCR
+
+# <b>Polymerase chain reaction<br>(PCR)</b>
+
+## PCR
+
+<div style="text-align: left;">
+
+- Thermal cycle
+
+</div>
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/PCR.jpg" style="zoom:60%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="PCR"><div style="font-size:12px; color: #000088">
+Source: [Polymerase chain reaction](https://commons.wikimedia.org/wiki/File:Polymerase_chain_reaction.svg)
+</div>
+
+## Amplification curve
+
+<div style="font-size: 25px;" class="left">
+Four pahses for PCR
+
+- Ground
+- Expoential
+- Linear
+- Plateau
+</div>
+
+<div style="font-size: 40px; text-align: left;" class="right">
+<p>
+<ul>
+<br>
+<li> 2<sup>n</sup> / cycle
+
+</ul>
+
+</div>
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/PCR_Stage.jpg", style="zoom:20%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="PCR stage">
+
+<div style="font-size:12px; color: #000088">
+Reference DOI: 10.1100/tsw.2011.124.
+</div>
+
+## Crucial factors for PCR efficiency
+
+<div style="font-size:25px;" class="left">
+
+<ul>
+<p>
+<li>Quality of DNA template 
+<li>DNA polymerase reality
+<li>dNTP concentration
+<li>Primers design, concentration...
+<li>Many other factors!
+<p>
+
+>- <font style="font-size: 30px; color: red;">Theoretically!</font>
+
+</ul>
+</div>
+
+<div class="right" >
+
+
+```{r PCR curve, echo=FALSE, include=TRUE, fig.width=5, fig.height=3.75, error=FALSE}
+
+curve(2^x,from=0,to=10, xlab = "Thermal cycles", ylab = "Amplification", col="red")
+
+```
+
+</div>
+
+# Real-time PCR
+
+## Real-time PCR machines
+
+<table style="border:0;">
+<tr>
+<th> Roche </th>
+<th> Bio-Rad</th>
+<th> Applied Biosystems</th>
+<th> Qiagen</th>
+<tr>
+<td>LightCycler<sup>®</sup>480<br><img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480.jpg", style="zoom:30%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="LC480"></td>
+<td>CFX96 Touch<sup style="font-size:15px;">TM</sup><br><img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/CFXconnect96.jpg", style="zoom:80%; border:0; border-radius:10px; box-shadow:0 0 0;" alt="CFXConnect96"></td>
+<td>StepOne<sup style="font-size:15px;">TM</sup><br><img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/ABIStepOne.jpeg", style="zoom:100%; border:0; border-radius:10px; box-shadow:0 0 0;" alt="ABIStepOne"></td>
+<td>Rotor-Gene Q<br><img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/RoterGeneQ.jpeg" style="zoom:10%; border:0; border-radius:10px; box-shadow:0 0 0;" alt="Qiagen Roter gene q"></td>
+<tr>
+</table>
+
+# Basic introduction
+
+## Applications
+
+<table style="border: 0;">
+<tr>
+<th style="vertical-align:middle;">Gene detection
+<th style="vertical-align:middle;">Gene expression
+<tr>
+<td style=" width:300px;">
+<UL>
+<li>Species identification</li>
+<li>Pathogens screening</li>
+<li>Diseases diagnosis</li>
+<li>Antibiotic resistance gene</li>
+</UL>
+<td style=" width:300px;">
+<ul>
+<li>Genotyping
+<li>Food safety analysis
+<li>Gene knockdown
+<li>Pharmacy researches
+</ul>
+<tr>
+</table>
+
+## Trends of publications using Real-time PCR
+
+<div class="left" style="font-size: 18px; margin: 10px;">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/qPCR_Trend.jpg" style="zoom:30%; border:0; border-radius:20px; box-shadow:0 0 0;",  alt="qPCR Trend">
+
+Number of publications in PubMed related to qPCR.<br>
+This plot shows the number of publications in PubMed related to specific qPCR applications.
+
+<font style="font-size:12px; color: #000088">
+Reference DOI: 10.1016/j.bdq.2014.08.002
+</font>
+
+</div>
+
+<div class="right" style="font-size: 18px; text-align: left; margin: 10px;">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/qPCR_FoodAnalysis.png" style="zoom:9.8%; border:0; border-radius:30px; box-shadow:0 0 0;",  alt="qPCR for food analysis">
+
+Summary of the research articles published in different journals.<br>
+The data was retrieved from Scopus by using the key word “Real-Time PCR for Food Analysis”
+
+<font style="font-size:12px; color: #000088">
+Reference DOI: 10.1007/s13197-016-2205-0
+</font>
+
+</div>
+
+## Two major detection format
+
+<div style="font-size: 30px;">
+
+- Non-specific dsDNA binding dyes
+
+- Sequence-specific fluorescence detection chemistry
+
+</div>
+
+## SYBR green I
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/SYBR_1.jpg" style="zoom:8%; border:0; border-radius:20px; box-shadow:0 0 0;",  alt="SYBR green 1">
+
+<div style="text-align: left;">
+<dl style="font-size: 25px;">
+  <dl>Indiscriminate binding into any dsDNA</dl>
+  <dd> - Primer dimers</dd>
+  <dd> - Sample DNA quality</dd>
+  <dd style="color: red;"> >- Melting curve analysis (*Tm* calling analysis) </dd>
+</dl>
+</div>
+<div style="font-size:12px; color: #000088;">
+Reference DOI: 10.1038/sj.leu.2402922
+</div>
+
+## Melting curve analysis
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/MeltingcurveAnalysis.jpg" style="zoom:60%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="Melting analysis"><div style="font-size:12px; color: #000088;">
+Reference DOI: 10.1002/9780470027318.a1406.pub2
+</div>
+
+## Hybridization probe
+
+<div style="font-szie: 18px; text-align:left;">
+
+- Fluorescence Resonance Energy Transfer (FRET)
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/FRET.jpg" style="zoom:10%; border:0;border-radius:20px; box-shadow:0 0 0;" alt="FRET">
+
+- TaqMan probe
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/TaqManProbe.jpg" style="zoom:10%; border:0;border-radius:20px; box-shadow:0 0 0;" alt="TaqManProbe">
+</div>
+<div style="font-size:12px; color: #000088;">
+Reference DOI: 10.1038/sj.leu.2402922
+</div>
+
+
+## <img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/allformat_1.jpg" style="zoom: 5.5%; border:0; border-radius: 20px;" alt="all format">
+
+<div style="font-size:12px; color: #000088;">
+Reference DOI: 10.1007/s13197-016-2205-0
+</div>
+
+# How to design my real-time PCR?
+
+## Resource
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/qPCR_Design.png" style="zoom: 50%; border:0; border-radius: 20px; box-shadow:0 0 0;" alt="qPCR design">
+
+## Free websites
+
+<div style="font-size:12px;">
+
+[<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/Primer3.jpg" style="zoom: 5%; border:0; border-radius: 20px;" alt="Primer3">](http://bioinfo.ut.ee/primer3-0.4.0/)<br>
+http://bioinfo.ut.ee/primer3-0.4.0/
+
+[<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/Beacon.jpg"style="zoom: 5%; border:0; border-radius: 20px;" alt="Beacon">](http://www.premierbiosoft.com/qOligo/Oligo.jsp?PID=1)<br>
+http://www.premierbiosoft.com/qOligo/Oligo.jsp?PID=1
+
+[<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/mfold.jpg" style="zoom: 5%; border:0; border-radius: 20px;" alt="mfold">](http://unafold.rna.albany.edu/?q=mfold/download-mfold)<br>
+http://unafold.rna.albany.edu/?q=mfold/download-mfold
+
+</div>
+
+## Example (I)
+
+曾經有過這樣的設計 (142-232)，看起來好像不錯！？
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/CSFV_qPCR_PIADC.png" style="zoom:100%; border:0; box-shadow: 0 0 0; border-radius: 10px;" alt="CSFV qPCR">
+
+## Exapmle (II)
+
+結果，因為立體結構的關係，使得擴增效率非常差！
+
+>- <font style="color: red;">設計實驗以後，利用免費資源看一下可能的狀況！</font>
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/Structure_1.jpg" style="zoom:25%; border:0; box-shadow: 0 0 0; border-radius: 10px;" alt="Structure1"><img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/Structure_2.jpg" style="zoom:25%; border:0; box-shadow: 0 0 0; border-radius: 10px;" alt="Structure1"><img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/Structure_3.jpg" style="zoom:25%; border:0; box-shadow: 0 0 0; border-radius: 10px;" alt="Structure1"><img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/Structure_4.jpg" style="zoom:25%; border:0; box-shadow: 0 0 0; border-radius: 10px;" alt="Structure1">
+
+# Data analysis
+
+## <img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/qPCR_Flowchart.jpg" style="zoom: 10%; border:0; border-radius: 20px; box-shadow:0 0 0;" alt="flowchart">
+
+<div style="font-size:12px; color: #000088;">
+Reference DOI: 10.1016/j.bdq.2014.08.002
+</dliv>
+
+## Quantification
+
+- Cp calculation
+
+- Abosolute
+
+- Relative
+
+- <i>Tm</i> calling analysis (Melting curve analysis)
+
+## Cp calculation
+
+<div style="font-size: 22px;">
+Crossing poing (Cp) = Cycle quantification (Cq) = Cycle threshold (Ct) = Take-off point (TOP)
+</div>
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/qPCR_CT.jpg" style="zoom:80%; border:0; border-radius: 20px; box-shadow:0 0 0;" alt="qPCR_Ct">
+
+<div style="font-size:12px; color: #000088;">
+Picture source:[What Is A Cycle Threshold (Ct) Value In qPCR?](https://toptipbio.com/ct-value-qpcr/)
+</div>
+
+## PCR efficiency
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/PCREfficiency.jpg" style="zoom:60%; border:0; box-shadow: 0 0 0; border-radius: 10px;" alt="PCR efficiency">
+
+<div style="font-size:12px; color: #000088;">
+Reference: http://www.gene-quantification.de/pfaffl-qPCR-efficiency1.gif
+</div>
+
+## PCR efficiency (I)
+
+<div style="text-align:left; font-size:30px; color:blue;">- PCR product number at the number of Cp</div>
+
+$N = N_{0}\times E^{Cp}$
+
+<div style="text-align:left; font-size:30px; color:blue;">- Linearised</div>
+
+$LogN = LogN_{0}+Cp\times LogE$
+
+<div style="text-align:left; font-size:30px; color:blue;">
+- Calculate the "Cp" and describe the PCR amplification
+</div>
+
+$Cp=-(\frac{1}{LogE})LogN_{0}+\frac{LogN}{LogE}$
+
+
+>- Slope of this equation!
+>- Draw the plot...
+
+## PCR efficiency (II)
+
+```{r PCR Efficiecy, echo=FALSE, include=TRUE,error=FALSE,fig.width=5, fig.height=3.75}
+
+curve(-3.363*x+30,from=1,to=8, xlab = "Log Concentration", ylab = "Cp", col="red")
+
+```
+
+<div style="text-align:left; font-size:30px; color:blue;">
+
+- PCR efficiecy "E" can be described as
+
+</div>
+
+>- $E = 10^{-\frac{1}{Slope}}$
+>- $E(\%) = -1 + 10^{-\frac{1}{Slope}}$
+
+## Absolute quantification
+
+<dl style="text-align:left;">
+<dt style="font-size:25px;"> Second-derivative maximum method</dt>
+<dd style="font-size:25px;">Standard method</dd>
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/2nD.jpg" style="zoom: 65%; border:0; border-radius: 10px; box-shadow:0 0 0;" alt="2nD">
+<dt style="font-size:25px;"> Fit point method</dt>
+<dd style="font-size:25px;"> Optional, user define</dd>
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/FItpoint.jpg" style="zoom: 70%; border:0; border-radius: 10px; box-shadow:0 0 0;" alt="fitpoint">
+</dl>
+
+<div style="font-size:12px; color: #000088;">
+Reference DOI: 10.1002/9780470027318.a1406.pub2
+</div>
+
+## Relative quantification (I)
+
+<div style="font-size:25px; text-align:left;">
+<ul>
+<li> Determination of mRNA expression level
+<li> Gene dosage quantification
+<li>Relative to <font style="color:red;">reference gene</font> and/or <font style="color:red;">calibrator sample</font>
+</ul>
+</div>
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/RelativeProteinExpression.jpg" style="zoom:50%; border: 5px dotted #33CCFF; box-shadow:0 0 0;" alt="Relarive Protein expression">
+<div style="font-size: 18px; text-align:left; color: #888888;">
+- SA: stalbe angina<br>
+- ACS: acute coronary syndrome
+</div>
+<div style="font-size:12px; color: #000088;">
+Reference DOI: 10.5114/aoms.2014.44871
+</div>
+
+## Relative quantification (II)
+<br>
+<div style="color: red; text-align: left;">
+
+$Relative\ ratio = \frac{Target\ gene\ concentration}{Reference\ gene\ concentration}$
+
+</div>
+<div style="text-align: left; font-size: 20px;">
+Reference gene:
+
+- Unaffected by experiment conditions (non-regulated)
+- Wide variety of cellular processes
+- One or more reference can be used
+
+</div>
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/ReferenceGeneSelection.jpg" style="zoom: 50%; border:0; box-shadow:0 0 0;" alt="Reference gene selection">
+
+<div style="font-size:12px; color: #000088;">
+Reference DOI: 10.1016/j.bbrc.2003.11.177 (被引用1,367次)
+</div>
+
+## Relative quantification (III)
+
+<div style="text-align: left; font-size: 25px;">
+
+Optional:
+
+<div style="color: red; text-align: left;">
+
+$Calibrator\ Normalize\ Ratio = \frac{\frac{Target\ gene\ concentration}{Reference\ gene\ concentration}(Sample)}{{\frac{Target\ gene\ concentration}{Reference\ gene\ concentration}(Calibrator)}}$
+
+</div>
+
+Calibrator:
+
+- Correct the differences in detection sensitivity between Target / Reference gene and several experiments (e.g., long-term studies)
+
+- Not treated cell line
+- Sample before experiment
+
+</div>
+
+## Relative quantification (IV)
+
+<ol>
+<li> Efficacy = 2 → ($2^{\Delta\Delta CT} method$)
+<li> Efficacy adjust (linear) - using standard curve
+</ol>
+
+## Relative quantification (V)
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_relativequantification.jpg" style="zoom: 80%; border:0; box-shadow:0 0 0;" alt="Relative quantification">
+
+<div style="font-size:12px; color: #000088;">
+Reference: Roche 教育訓練專員講義
+</div>
+
+## <i>Tm</i> Calling analysis
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_TmCalling.jpg" style="zoom: 80%; border:0; box-shadow:0 0 0;" alt="Tm Calling" >
+
+## Analysis tools
+
+- LightCycler 480 Software
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LPC480software.jpg" style="zoom: 80%; border:0; border-radius: 5px; box-shadow:0 0 0;" alt="LC480 software">
+
+## Resource fo analysis tools
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/AnalysisTools.jpg" style="zoom: 50%; border:0; border-radius: 10px; box-shadow:0 0 0;" alt="Analysis tools"><img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/AnalysisPlatforms.jpg" style="zoom: 40%; border:0; border-radius: 10px; box-shadow:0 0 0;" alt="Analysis platforms">
+
+# The MIQE guidelines<br>for Real-time PCR
+
+## <img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/DifferentSystem.jpg" style="zoom:50%; border:0; border-radius: 10px; box-shadow:0 0 0;", alt="Different System">
+
+## Different results?
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/DiffMelt.jpg" style="zoom:30%; border:0; border-radius: 10px; box-shadow:0 0 0;", alt="Different Melting cruve">
+
+<div style="font-size:12px; color: #000088;">
+Reference DOI: 10.1016/j.mcp.2010.04.002
+</div>
+
+## MIQE
+
+- <font style="color:red;">M</font>inimum <font style="color:red;">I</font>nformation for Publication of <font style="color:red;">Q</font>uantitative Real-Time PCR <font style="color:red;">E</font>xperiments, (2009)
+
+- [MIQE & PCR (2016, Jun)](https://itunes.apple.com/us/book/miqe-qpcr/id993276375?mt=11)
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/MIQE2016.jpg" style="zoom:20%; border:0; border-radius: 10px; box-shadow:0 0 0;", alt="MIQE 2016">
+
+## Ohter guides
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/GuidesForqPCR_1.jpg" style="zoom:20%; border:0; border-radius: 10px; box-shadow:0 0 0;", alt="Other guides">
+
+# LightCycler<sup>®</sup> 480 Instrument
+
+## General of LC480
+
+<div class="left">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480general.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="LC480 General">
+
+</div>
+
+<div class="right">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LPC480_1.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="LC480 front"><br>
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_fans.jpg" style="zoom:40%; border: 0; box-shadow:0 0 0;" alt="LC480_fans">
+
+</div>
+
+## Enviroment parameters
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_EnviromentsParamaters.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="Enviroment parameters">
+
+<div style="text-align:left; font-size: 25px;">
+<ul>
+<li style="color:red;">機器使用時，請將冷氣開啟，以維持溫度 (大約 26˚C 左右)。
+<li style="color:red;">冷氣開啟時，請注意隨手關門，電費不便宜！
+</ul>
+</div>
+
+## LightCycler<sup>®</sup> 480 (I)
+
+<div class="left">
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_2.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="LC480 外觀">
+</div>
+
+<div class="right">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_light.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="LC480 light">
+
+</div>
+
+## LightCycler<sup>®</sup> 480 (II)
+
+<div class="left">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_PlateLoader.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="plate loader 1">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_Multiloader.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="plate loader 2">
+
+</div>
+
+<div class="right" style="text-align:left;">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_SampleCapicity.jpg" style="zoom:40%; border: 0; box-shadow:0 0 0;" alt="Sample capicity">
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_WhitePlate.jpg" style="zoom:30%; border: 0; box-shadow:0 0 0;" alt="Whit plate">
+
+<font style="color:red; font-size:25px;">限定使用Roche原廠耗材！<br>(盤子與封模，唯一限定的材料)</font>
+
+</div>
+
+## LightCycler<sup>®</sup> 480 (III)
+
+<div style="text-align:left; font-size:25px;">
+- Thermal cycler
+</div>
+
+<div class="left">
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/ThermalCycler.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="Thermal cycler">
+</div>
+
+<div class="right">
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_ThermalBase.jpg" style="zoom:70%; border: 0; box-shadow:0 0 0;" alt="Thermal base">
+</div>
+
+## LightCycler<sup>®</sup> 480 (IV)
+
+<div class="left" style="text-align:left; font-size: 25px;">
+- Optical system
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_cartoon.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="LC480 cartoon">
+</div>
+<div class="right">
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_filters.jpg" style="zoom:32%; border: 0; box-shadow:0 0 0;" alt="LC480 filters">
+</div>
+
+## LightCycler<sup>®</sup> 480 - Filter set
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_filterset.jpg" style="box-shadow: 0 0 0; border:0;" alt="Filter set">
+
+## LightCycler<sup>®</sup> 480 - Xenon lamp (氙)
+
+<img src="/Volumes/Data/實驗室準則/qPCR 訓練課程/qPCR_slide/Pictures/LC480_XenonLamp.jpg" style="box-shadow:0 0 0; border:0;" alt="Xenon lamp">
+
+# 一定要遵守這些事
+
+## 請注意！
+
+<ul>
+<li> 使用前登記，安排實驗次序
+<li> 注意空調，維持機器運作時的室內溫度
+<li> 限定使用原廠白盤及封膜！ (未遵守者禁止使用)
+<li> 燈泡很貴！請算好操作的時間，不要開著機器讓他燒！
+</ul>
+
+# <b style="color: red;">Thank you!</b>
+```{language="Javascript"}
+<script language="Javascript">
+document.write('<a href="http://www.free-counter.jp/"></a>');</script><noscript>
+<a href="http://hrs.f-counter.com/">カウンター</a><a href="http://hqm.f-counter.com/">カウンター</a></noscript>
+<nobr><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://www.free-counter.jp/"><img src="https://www.f-counter.net/ani1/30/1536742361/" alt="カウンター" border="0" style="margin:0px; padding:0px; border:0px; vertical-align:bottom"></a></td>
+<td><a href="http://www.free-counter.jp/"><img src="https://www.f-counter.net/ani2/30/1536742361/" alt="カウンター" border="0" style="margin:0px; padding:0px; border:0px; vertical-align:bottom"></a></td></tr></tbody></table></nobr>
+```
