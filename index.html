@@ -4,7 +4,7 @@
     <title>Basic introduction of Real-time PCR (LightCycler® 480 system)</title>
     <meta charset="utf-8" />
     <meta name="author" content="Jing-yuan Chen" />
-    <script src="realtimePCR2021_files/header-attrs-2.9/header-attrs.js"></script>
+    <script src="realtimePCR2021_files/header-attrs-2.10/header-attrs.js"></script>
     <link href="realtimePCR2021_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
     <script src="realtimePCR2021_files/tile-view-0.2.6/tile-view.js"></script>
     <link href="realtimePCR2021_files/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
@@ -12,6 +12,7 @@
     <script src="realtimePCR2021_files/panelset-0.2.6/panelset.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" type="text/css" />
+    <link rel="stylesheet" href="panelset.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -20,14 +21,14 @@ class: center, middle, inverse, title-slide
 # <font size=15>Basic introduction of Real-time PCR<br>(LightCycler<sup>®</sup> 480 system)</font>
 ### <font size = 5>Jing-yuan Chen</font>
 ### <font size =5>Graduate Institute of Veterinary Pathobiology</font>
-### <font size = 5>2018/8/17 (updated: 2021-07-28)</font>
+### <font size = 5>2018/8/17 (updated: 2021-08-22)</font>
 
 ---
 
 
 
-class: middle, center
 
+class: middle, center
 
 Presentation slide: https://lazyliondog.github.io/realtimePCR/  
 
@@ -211,7 +212,7 @@ Number of publications in PubMed related to qPCR.&lt;br&gt;
 &lt;div class="right" style="font-size: 18px; text-align: left; margin: 10px;"&gt;
 
 &lt;img src="10qPCR_FoodAnalysis.png" style="zoom:9.8%; border:0; border-radius:30px; box-shadow:0 0 0;" alt="qPCR for food analysis"&gt;
-
+&lt;br&gt;
 Summary of the research articles published in different journals.
 
 &lt;/div&gt;
@@ -322,39 +323,40 @@ class: center, middle
 ---
 class: center
 
-## Free websites
+## Online software
+
+.panelset[
+.panel[.panel-name[Primer design]
 
 .pull-left[
-
-● Primer design
-
 .center[Primer3]
 [&lt;img src="17Primer3.jpg" style="zoom: 5%; border:10; border-radius: 20px;" alt="Primer3"&gt;](http://bioinfo.ut.ee/primer3-0.4.0/)
-
-
-.center[Beacon designer]
-[&lt;img src="18Beacon.jpg"style="zoom: 5%; border:0; border-radius: 20px;" alt="Beacon"&gt;](http://www.premierbiosoft.com/qOligo/Oligo.jsp?PID=1)
-
-
 ]
 
 .pull-right[
+.center[Beacon designer]
+[&lt;img src="18Beacon.jpg"style="zoom: 5%; border:0; border-radius: 20px;" alt="Beacon"&gt;](http://www.premierbiosoft.com/qOligo/Oligo.jsp?PID=1)
+]
+]
 
-● Check product structure
+.panel[.panel-name[Check product structure]
 
 .center[mfold]
 [&lt;img src="19mfold.jpg" style="zoom: 5%; border:0; border-radius: 20px;" alt="mfold"&gt;](http://www.unafold.org/)
 
-● Sequences alignment (multiple)
+]
+
+.panel[.panel-name[Sequences alignment (multiple)]
 
 .center[Clustal omega]
 [&lt;img src="20ClustalOmega.jpg" style="zoom:60%; border:0; border-radius:20px;" alt="clustal omega"&gt;](https://www.ebi.ac.uk/Tools/msa/clustalo/)
 
-&lt;div style="font-size: 10px; position: absolutel; bottom: 10pt;"&gt;
+]
+]
+
+&lt;div style="font-size: 10px; position: absolute; bottom: 10pt;"&gt;
 Reference DOI: &lt;a href="https://doi.org/10.1002/pro.3290"&gt;10.1002/pro.3290&lt;/a&gt;
 &lt;/div&gt;
-
-]
 
 ---
 
@@ -469,21 +471,22 @@ Calculate the "Cp" and describe the PCR amplification
 
 ## PCR efficiency (II)
 
-&lt;img src="PCR_Efficiency.png"&gt;
+.pull-left[.center[&lt;img src="PCR_Efficiency.png"&gt;]]
 
-&lt;div style="text-align:left; font-size:30px; color:blue;"&gt;
+.pull-right[
+&lt;div style="text-align:left; font-size:28px; color:blue;"&gt;
 
 PCR efficiency "E" can be described as
 
 &lt;/div&gt;
 
---
-
-&gt; `\(E = 10^{-\frac{1}{Slope}}\)`
+&gt; `$$E = 10^{-\frac{1}{Slope}}$$`
  
---
+.center[or]
 
-&gt; `\(E(\%) = -1 + 10^{-\frac{1}{Slope}}\)`
+&gt; `$$E(\%) = -1 + 10^{-\frac{1}{Slope}}$$`
+
+]
 
 ---
 
@@ -707,8 +710,17 @@ DOI: [10.2217/14622416.8.6.597](http://doi.org/10.2217/14622416.8.6.597)]
 
 ## High-resolution meltign analysis
 
-.center[&lt;img src="73seqalign.jpg" style="zoom: 45%;"&gt;&lt;p&gt;
-&lt;img src="74hrm.jpg" style="zoom:45%;"&gt;]
+.panelset[
+.panel[.panel-name[Sequence alignment]
+.ecnter[&lt;img src="73seqalign.jpg" style="zoom: 80%;"&gt;]
+]
+.panel[.panel-name[HRM]
+.center[&lt;img src="74hrm.jpg" style="zoom:100%;"&gt;]
+]
+]
+
+???
+&lt;img src="73seqalign.jpg" style="zoom: 45%;"&gt;&lt;img src="74hrm.jpg" style="zoom:45%;"&gt;
 
 ---
 
@@ -802,7 +814,7 @@ background-size: contain
 ## Other guidelines and informations
 
 - 其他規範 real-time PCR 發表的指引
-&gt; [Guidelines for validation of qualitative real-time PCR methods](https://doi.org/Guidelines for validation of qualitative real-time PCR methods)
+&gt; [Guidelines for validation of qualitative real-time PCR methods](https://doi.org/10.1016/j.tifs.2014.03.008)
 
 - 關於評估 real-time PCR 反應效率
 &gt; [How good is a PCR efficiency estimate: Recommendations for precise and robust qPCR efficiency assessments](https://doi.org/10.1016/j.bdq.2015.01.005)
@@ -845,7 +857,7 @@ class: center, middle
 
 ---
 
-## LightCycler&lt;sup&gt;®&lt;/sup&gt; 480 (I)
+## LightCycler&lt;sup&gt;®&lt;/sup&gt; 480
 
 .panelset[
 
@@ -885,6 +897,7 @@ class: center, middle
 ]
 .pull-right[
 .center[&lt;img src="60LC480_DetectionFormats.jpg", style="width: 400pt; height: 200pt;" alt="Filter set II"&gt;]
+- 一定要注意 dye 的選用搭配哦！
 ]]]]
 
 
@@ -897,7 +910,7 @@ Pack Size: 50 plates with foils (50 盤含封膜)
 其他耗材亦可參考原廠網站
 
 
-其他波段資料 [[連結](https://www.bio-rad.com/webroot/web/images/lsr/products/amplification_pcr/product_overlay_content/global/lsr_384_excite_emiss_wave.jpg)] 
+其他波段資料 [[Bio-rad 連結](https://www.bio-rad.com/webroot/web/images/lsr/products/amplification_pcr/product_overlay_content/global/lsr_384_excite_emiss_wave.jpg)] 
 
 ---
 
@@ -909,13 +922,29 @@ Pack Size: 50 plates with foils (50 盤含封膜)
 
 ## 請大家共同遵守這些事
 
-&lt;ul&gt;
-&lt;li&gt; 使用前登記，安排實驗次序
+.pull-left[
+&lt;ul style="font-size: 20pt;"&gt;
+&lt;li&gt; 使用前登記，安排實驗次序。
 &lt;li&gt; 注意空調，維持機器運作時的室內溫度
-&lt;li&gt; 限定使用原廠白盤及封膜！ (未遵守者禁止使用)
-&lt;li&gt; 燈泡很貴！請算好操作的時間，不要開著機器燒！
-&lt;li&gt; 如果有問題，請和實驗室前輩/學長姊討論，或也可以來找我 ^_^
+&lt;li&gt; 限定使用原廠白盤及封膜！&lt;br&gt;(未遵守者禁止使用)
+&lt;li&gt; 請算好操作的時間，不要開著機器燒！&lt;br&gt;(燈泡滿貴的)
+&lt;li&gt; 如果有問題，請和實驗室前輩/學長姊討論。
 &lt;/ul&gt;
+]
+
+.pull-right[
+&lt;font style="font-size: 20pt;"&gt;
+ 使用中，如果遇到設備故障，請聯絡原廠工程師，並且請轉知所上老師。 
+&lt;ul&gt;
+  &lt;li&gt; &lt;b style="color: red;"&gt;上班時間&lt;/b&gt;維修專線 (Mon-Fri, 8:45~17:30)
+  &lt;li&gt; 0800-258-458
+  &lt;li&gt; &lt;b style="color:red;"&gt;非上班時間&lt;/b&gt;維修專線
+  &lt;li&gt; 北區 0928-256-624
+  &lt;li&gt; 中區 0910-387-746
+  &lt;li&gt; 南區 0910-387-748
+  &lt;/ul&gt;
+&lt;/font&gt;
+]
 
 ---
 class: center, middle
