@@ -1,0 +1,955 @@
+---
+title: "<font size=15>Basic introduction of Real-time PCR<br>(LightCycler<sup>®</sup> 480 system)</font>"
+subtitle: 
+author: "<font size = 5>Jing-yuan Chen</font>"
+institute: "<font size =5>Graduate Institute of Veterinary Pathobiology</font>"
+date: "<font size = 5>2018/8/17 (updated: `r Sys.Date()`)</font>"
+output:
+  xaringan::moon_reader:
+    css: 
+    - xaringan-themer.css
+    - "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+    nature:
+      slideNumberFormat: "%current% / %total%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r theme setup, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent()
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "panelset"))
+
+```
+
+class: middle, center
+
+Presentation slide: https://lazyliondog.github.io/realtimePCR/  
+
+<img src = "01qrcode.png">  
+
+[簡要中文操作手冊下載](https://github.com/LazyLionDog/realtimePCR/raw/master/LC480_Software1.5.pdf)  
+(按下去才會下載！)  
+
+閱覽過程，隨時可按 "h" 參考操作說明。
+
+---
+## Polymerase chain reaction
+
+- PCR
+- Thermal cycle
+
+.center[<img src="02PCR.jpg" style="zoom:35%; border:0; border-radius:20px; box-shadow:0 0 0; fig-align: middle;" alt="PCR">]
+
+<div style="font-size: 15px;">
+
+.footnote[Source: [Polymerase chain reaction](https://commons.wikimedia.org/wiki/File:Polymerase_chain_reaction.svg)]
+
+</div>
+
+---
+
+## Amplification curve
+
+.pull-left[
+
+<ul style="font-size: 30px;">
+Four phases for PCR  
+<li> Ground
+<li> Exponential
+<li> Linear
+<li> Plateau
+</ul>
+
+]
+
+.pull-right[.center[
+<div style="font-size: 40px; color: #4169e1;">
+2<sup>n</sup> / cycle
+<img src="03PCR_Stage.jpg" style="zoom:20%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="PCR stage">]]
+
+.footnote[Reference DOI: [10.1100/tsw.2011.124.](https://doi.org/10.1100/tsw.2011.124)]
+
+???
+- PCR反應可以依照產物的生成量，分為幾個階段
+1. 基礎期
+2. 指數期
+3. 線性期
+4. 平原期
+
+- 如同第一張簡報所呈現的，通常我們認為是以 2 的倍數來放大所要檢測的目標基因 (2 的 n 次方)
+- 問題來了！ n 代表的是什麼？ 是否跟這個圖形相符？
+
+---
+
+## PCR efficiency
+
+.pull-left[.center[<img src="PCR_curve.png">]
+
+]
+
+--
+
+<span style="position: absolute; top: 180pt; left: 450pt;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Braininvat.jpg">
+<font style="font-size: 30px; color: red;">In theory!</font>
+</span>
+
+???
+- 這個才是真的 2<sup style="font-size:6pt;">n</sup> 曲線！
+- 理想總是太豐滿，現實確是很骨感… 是什麼因素造成骨感的現實？
+
+---
+background-image: url("04KHV.jpg")
+background-size: cover
+class: center, bottom, inverse
+
+--
+<ul style="font-size: 30px; color: #4d4dff; position: absolute; right: 40pt; top: 50pt; text-align: left;">Reality!
+<font style="color: #FFFFFF;">
+<li>Quality of DNA template</li>
+<li>DNA polymerase activity</li>
+<li>dNTP concentration</li>
+Primers design and concentration...
+</font>
+</ul>
+
+???
+這張圖你看到了什麼？ 特別是第二條 lane 的位置  
+什麼原因可能造成這樣的結果？  
+有許多因素可能影響 PCR/real-time PCR 的擴增效率，這些因素可能可以被優化，也有可能無法優化
+
+---
+class: center, middle
+
+# Real-time PCR  
+
+---
+
+## Real-time PCR machines
+
+<table style="border:0;">
+<thead>
+<tr>
+<th> Roche </th>
+<th> Bio-Rad</th>
+<th> Applied Biosystems</th>
+<th> Qiagen</th>
+<tr>
+</thead>
+<tbody style="text-align: center;">
+<td><img src="05LC480.jpg" style="zoom:30%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="LC480">LightCycler<sup>®</sup>480<br></td>
+<td><img src="06CFXconnect96.jpg" style="zoom:80%; border:0; border-radius:10px; box-shadow:0 0 0;" alt="CFXConnect96">CFX96 Touch<sup style="font-size:12px;">TM</sup><br></td>
+<td><img src="07ABIStepOne.jpeg" style="zoom:100%; border:0; border-radius:10px; box-shadow:0 0 0;" alt="ABIStepOne">StepOne<sup style="font-size:12px;">TM</sup><br></td>
+<td><img src="08RoterGeneQ.jpeg" style="zoom:15%; border:0; border-radius:10px; box-shadow:0 0 0;" alt="Qiagen Roter gene q">Rotor-Gene Q<br></td>
+<tr>
+</tbody>
+</table>
+
+- and others... 
+
+---
+class: center, middle
+
+# Basic introduction
+
+---
+
+## Applications
+
+<table style="border: 0; width: 600pt;">
+<thead>
+<tr>
+<th style="vertical-align:middle;">Gene detection
+<th style="vertical-align:middle;">Gene expression
+<tr>
+</therd>
+<tbody>
+<td style=" width:300px;">
+<UL>
+<li>Species identification</li>
+<li>Pathogens screening</li>
+<li>Diseases diagnosis</li>
+<li>Antibiotic resistance gene</li>
+</UL>
+<td style=" width:300px;">
+<ul>
+<li>Genotyping
+<li>Food safety analysis
+<li>Gene knockdown
+<li>Pharmacy researches
+</ul>
+<tr>
+</tbody>
+</table>
+
+???
+還可以幹麻呢？
+
+---
+
+## Trends of publications using Real-time PCR
+
+.pull-left[
+
+<div class="left" style="font-size: 18px; margin: 10px;">
+
+<img src="09qPCR_Trend.jpg" style="zoom:30%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="qPCR Trend">
+
+Number of publications in PubMed related to qPCR.<br>
+
+</div>
+]
+
+.pull-right[
+
+<div class="right" style="font-size: 18px; text-align: left; margin: 10px;">
+
+<img src="10qPCR_FoodAnalysis.png" style="zoom:9.8%; border:0; border-radius:30px; box-shadow:0 0 0;" alt="qPCR for food analysis">
+<br>
+Summary of the research articles published in different journals.
+
+</div>
+
+]
+
+<div style="font-size: 15px;">
+
+.footnotep[
+Reference DOI:  
+[10.1016/j.bdq.2014.08.002](https://doi.org/10.1016/j.bdq.2014.08.002)  
+[10.1007/s13197-016-2205-0](https://doi.org/10.1007/s13197-016-2205-0)
+]
+
+</div>
+
+---
+
+## Two major detection format
+
+<div style="font-size: 30px;">
+
+- Non-specific dsDNA binding dyes<p>
+
+- Sequence-specific fluorescence detection chemistry
+
+</div>
+
+---
+
+## SYBR green I
+
+<img src="11SYBR_1.jpg" style="zoom:8%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="SYBR green 1">
+
+<div style="text-align: left;">
+<dl style="font-size: 25px;">
+  <dl>Indiscriminate binding into any dsDNA</dl>
+  <dd> - Primer dimers</dd>
+  <dd> - Sample DNA quality</dd>
+  <dd style="color: red;"> - Melting curve analysis (<I>Tm</I> calling analysis)
+  
+</dl>
+</div>
+
+
+<div style="font-size:15px;">
+
+.footnote[
+Reference DOI: [10.1038/sj.leu.2402922](https://doi.org/10.1038/sj.leu.2402922)
+]
+
+</div>
+
+---
+
+## Melting curve analysis
+
+
+.center[<img src="12MeltingcurveAnalysis.jpg" style="zoom:50%; border:0; border-radius:20px; box-shadow:0 0 0;" alt="Melting analysis">]
+
+<div style="font-size:15px;">
+
+.footnote[
+Reference DOI: [10.1002/9780470027318.a1406.pub2](https://doi.org/10.1002/9780470027318.a1406.pub2)
+]
+
+</div>
+
+---
+
+## Hybridization probe
+
+.panelset[
+.panel[.panel-name[TaqMan probe]
+
+<img src="14TaqManProbe.jpg" alt="TaqManProbe">
+
+]
+.panel[.panel-name[Fluorescence Resonance Energy Transfer (FRET)]
+
+<img src="13FRET.jpg" alt="FRET">
+
+]]
+
+<div style="font-size:10px; position: absolute; bottom: 5pt;">
+Reference DOI: <a href="https://doi.org/10.1038/sj.leu.2402922">10.1038/sj.leu.2402922</a>
+</div>
+
+---
+background-image: url("15allformat_1.jpg")
+background-size: contain
+class: bottom, left
+
+<div style="font-size:10px; position: absolute; bottom: 5pt;">
+Reference DOI: <a href="https://doi.org/10.1007/s13197-016-2205-0">10.1007/s13197-016-2205-0<a></div>
+
+---
+class: center, middle
+
+# How to design my real-time PCR?
+
+---
+## Resource
+
+.center[[<img src="16qPCR_Design.png" style="zoom: 50%; border:0; border-radius: 20px; box-shadow:0 0 0;" alt="qPCR design">](https://doi.org/10.1002/bmb.20461)]
+.center[點按下載 paper]
+
+---
+class: center
+
+## Online software
+
+.panelset[
+.panel[
+.panel-name[Primer design]
+
+<figure style="position: absolute; top: 80pt; left:100pt;">
+<figcaption>Primer3</figcaption>
+<a href="http://bioinfo.ut.ee/primer3-0.4.0/"><img src="17Primer3.jpg" style="zoom: 8%; border:10; border-radius: 20px;" alt="Primer3"></a>
+</figure>
+<figure style="position: absolute; top: 80pt; right: 100pt;">
+<figcaption>Beacon</figcaption>
+<a href="http://www.premierbiosoft.com/qOligo/Oligo.jsp?PID=1"><img src="18Beacon.jpg"style="zoom: 8%; border:0; border-radius: 20px;" alt="Beacon"></a>
+</figure>
+]
+
+.panel[
+.panel-name[Product structure]
+
+<figure>
+<figcaption>mfold</figcaption>
+<a href="http://www.unafold.org/"><img src="19mfold.jpg" style="zoom: 10%; border:0; border-radius: 20px;" alt="mfold"></a>
+</figure>
+
+]
+
+.panel[
+.panel-name[Sequences alignment]
+
+<figure>
+<figcaption>Clustal omega</figcaption>
+<a href="https://www.ebi.ac.uk/Tools/msa/clustalo/"><img src="20ClustalOmega.jpg" style="zoom:100%; border:0; border-radius:20px; align: center;" alt="clustal omega"></a>
+</figure>
+
+]
+]
+
+<div style="font-size: 10px; position: absolute; bottom: 10pt;">
+Reference DOI: <a href="https://doi.org/10.1002/pro.3290">10.1002/pro.3290</a>
+</div>
+
+---
+
+## Example
+
+.panelset[
+.panel[.panel-name[Primer design and sequences]
+
+<img src="21CSFV_qPCR_PIADC.png" style="zoom:100%; border:0; box-shadow: 0 0 0; border-radius: 10px;" alt="CSFV qPCR">
+
+]
+.panel[.panel-name[Structure]
+.center[<img src="22Structure.jpg" style="zoom:70%;" alt="Structure">]
+]
+]
+
+???
+因為primer辯認複雜結構的關係，擴增效率極差！
+
+---
+class: center, middle
+
+# Data analysis
+
+---
+background-image: url("26qPCR_Flowchart.jpg")
+background-size: contain
+class: bottom, left
+
+<div style="font-size:15px;">
+.footnote[
+Reference DOI:<br>[10.1016/j.bdq.2014.08.002](https://doi.org/10.1016/j.bdq.2014.08.002)
+]
+</div>
+
+---
+
+## Quantification
+
+● Cp calculation  
+  
+● Absolute  
+  
+● Relative  
+  
+● <i>Tm</i> calling analysis (Melting curve analysis)
+
+--
+
+<img src="Ct.jpg" style="zoom:70%; position: absolute; top:100pt; z-index:1; right: 10pt;">
+
+---
+## Cp calculation
+
+.pull-left[
+<ul>
+<li>Following are the same concept!
+<ul style="color:#2894FF;">
+<li>Crossing poing (Cp)  
+<li>Cycle quantification (Cq)  
+<li>Cycle threshold (Ct)  
+<li>Take-off point (TOP)  
+</ul>
+<br>
+<li>各廠牌設備計算方式略有不同！  
+<li>Minimum Information for Publication of Quantitative Real-Time PCR Experiments (<a href="#52">MIQE</a>) 
+</ul>
+
+]
+
+.pull-right[
+
+<img src="27qPCR_CT.jpg" style="zoom:70%; border:0; border-radius: 20px; box-shadow:0 0 0;" alt="qPCR_Ct">
+
+]
+
+<div style="font-size:15px;">
+Picture source: <a href="https://toptipbio.com/ct-value-qpcr/">What Is A Cycle Threshold (Ct) Value In qPCR?</a>
+</div>
+
+---
+
+background-image: url("28PCREfficiency.jpg")
+background-size:contain
+
+.footnote[[Source](http://www.gene-quantification.de/pfaffl-qPCR-efficiency1.gif)]
+
+---
+## PCR efficiency (I)
+
+PCR product number at the number of Cp
+
+> $N = N_{0}\times E^{Cp}$
+
+Linearise
+
+> $LogN = LogN_{0}+Cp\times LogE$
+
+Calculate the "Cp" and describe the PCR amplification
+
+> $Cp=-(\frac{1}{LogE})LogN_{0}+\frac{LogN}{LogE}$
+
+--
+
+**Slope of this equation!**
+
+--
+
+**Plot the equation...**
+
+---
+
+## PCR efficiency (II)
+
+.pull-left[.center[<img src="PCR_Efficiency.png">]]
+
+.pull-right[
+<div style="text-align:left; font-size:28px; color:blue;">
+
+PCR efficiency "E" can be described as
+
+</div>
+
+> $$E = 10^{-\frac{1}{Slope}}$$
+ 
+.center[or]
+
+> $$E(\%) = -1 + 10^{-\frac{1}{Slope}}$$
+
+]
+
+---
+
+## Absolute quantification
+
+.panelset[
+
+.panel[
+.panel-name[Second-derivative maximum method]
+
+- <font style="color:#2894ff;">Standard method (highly recommended!)</font>
+
+.center[<img src="29_2nD.jpg" style="zoom: 150%;" alt="2nD">]
+
+- 其他圖示說明請按"p"
+
+]
+
+.panel[
+.panel-name[Fit point method]
+
+- Optional, user defined
+
+<img src="30FItpoint.jpg" style="zoom: 150%;" alt="fitpoint">
+
+]]
+
+
+<div style="font-size:12px; position: absolute; bottom: 10pt;">
+Reference DOI: <a href="https://doi.org/10.1002/9780470027318.a1406.pub2">10.1002/9780470027318.a1406.pub2</a>
+</div>
+
+???
+
+<img src="Derivative.jpg" alt="second-derivative">
+
+---
+
+## Relative quantification (I)
+
+<div style="font-size:25px; text-align:left;">
+<ul>
+<li> Determination of mRNA expression level
+<li> Gene dosage quantification
+<li>Relative to <font style="color:red;">reference gene</font> and/or <font style="color:red;">calibrator sample</font>
+</ul>
+</div>
+
+.center[<img src="31RelativeProteinExpression.jpg" style="zoom:50%;" alt="Relative Protein expression">
+<div style="font-size: 18px; text-align:left; color: #888888;">]
+
+.left[- SA: stable angina (穩定型心絞痛)<br>
+- ACS: acute coronary syndrome (急性冠心症)]
+</div>
+
+<div style="font-size:12px; position: absolute; bottom: 5pt;">
+Reference DOI: <a href="https://doi.org/10.5114/aoms.2014.44871">10.5114/aoms.2014.44871</a>
+</div>
+
+---
+
+## Relative quantification (II)  
+
+.pull-left[
+
+
+$$Relative\ ratio =\frac {Target\ gene\ conc.}{Reference\ gene\ conc.}$$
+  
+  
+  
+**Reference gene:**
+
+- Unaffected by experiment conditions (non-regulated)  
+- Wide variety of cellular processes  
+- One or more reference can be used  
+
+]
+
+.pull-right[
+
+- Selection of reference gene
+
+<a href="https://doi.org/10.1016/j.bbrc.2003.11.177">
+<img src="32ReferenceGeneSelection.jpg" style="zoom: 50%; border:5px #66CCFF solid; position: absolute; top: 350pt; right:100pt;" alt="Reference gene selection">
+</a>
+
+]
+
+<div style="font-size:15px; position: absolute; bottom: 20pt;">
+Reference DOI: <a href="https://doi.org/10.1016/j.bbrc.2003.11.177">10.1016/j.bbrc.2003.11.177 (被引用1,367次)
+</div>
+
+---
+
+## Relative quantification (III)
+
+
+
+**Optional:**
+
+$$Calibrator\ Normalize\ Ratio = \frac{\frac{Target\ gene\ concentration}{Reference\ gene\ concentration}(Sample)}{{\frac{Target\ gene\ concentration}{Reference\ gene\ concentration}(Calibrator)}}$$
+
+
+**Calibrator:**
+<ul>
+<li>Correct the differences in detection sensitivity between 
+<ul>
+<li>Target / Reference gene
+<li>several experiments (e.g., long-term studies)  
+</ul>
+<li>Not treated cell line  
+<li>Sample before experiment
+</ul>
+
+---
+
+## Relative quantification (IV)
+
+<br>
+
+Efficacy = 2 → ( $2^{\Delta\Delta CT} method$ )
+
+<br>
+
+Efficacy adjust (linear) - using standard curve
+
+---
+
+## Relative quantification (V)
+
+.center[<img src="33LC480_relativequantification.jpg" style="zoom: 70%; border:0; box-shadow:0 0 0; margin: auto;" alt="Relative quantification">]
+
+---
+
+## <i>Tm</i> Calling analysis
+
+.center[<img src="34LC480_TmCalling.jpg" style="zoom: 80%; border:0; box-shadow:0 0 0;" alt="Tm Calling" >]
+
+???
+Tm calling analysis = melting curve analysis  
+初步鑑別產物的特異性  
+其他應用的可能？  
+<img src="Derivative.jpg" alt="second-derivative">
+
+---
+
+## Genotyping / Serotyping
+
+.pull-left[
+● Random amplified polymorphic DNA (RAPD)  
+<img src="63RADP.png">
+] 
+
+.pull-right[
+● Restriction fragment length ploymorphism (RFLP)
+<img src="64RFLP.gif">
+]
+
+<div style="font-size:12px; position: absolute; bottom: 50pt; right: 50pt;">
+Source: <a href="https://www.differencebetween.com/difference-between-rapd-and-vs-rflp/K">Difference Between RAPD and RFLP</a>
+</div>
+
+---
+
+## For example
+
+.center[<img src="65HPSserotyping.jpg" style="zoom: 60%;">]
+
+<div style="font-size:15px;">
+.footnote[
+DOI: [10.1128/JCM.01991-15.](http://doi.org/10.1128/JCM.01991-15)]
+</div>
+
+???
+但是跑膠的時候仍有可能出現問題！？
+當 15 個血清型一起跑的時候，可以看出差異，但是如果只有單一樣本在跑，則在測定的時候一要算得極準確，但是像鏡頭週邊彎曲，造成影像失真，就會影響判讀結果。
+
+---
+
+## DNA binding dyes
+
+.pull-left[.center[<img src="66etbr.jpg" style="zoom:60%;">]]
+
+.pull-right[.center[<img src = "67sybr.jpg" style="zoom:60%;">]]
+
+<div style="font-size:15px; position: absolute; bottom: 20pt;">
+DOI: <a href="http://doi.org/10.1007/s10895-012-1059-8">10.1007/s10895-012-1059-8</a>
+</div>
+
+
+???
+url("68sybr.jpg")
+
+
+---
+
+## EvaGreen binding dye
+
+.center[<img src="69evagreen.jpg" style="zoom:60%;">]
+
+.center[<img src="70evagreen.jpg" style="zoom:40%;">]
+
+<div style="font-size:15px;">
+.footnote[
+DOI: [10.1039/c7cp06058k](http://doi.org/10.1039/c7cp06058k)]
+
+---
+
+## High-resolution meltign analysis
+
+.pull-left[● Original fluorescence data  <img src="71melting.png">]
+
+.pull-right[● Normalized data  <img src="72melting2.png">]
+
+<div style="font-size:15px;">
+.footnote[
+DOI: [10.2217/14622416.8.6.597](http://doi.org/10.2217/14622416.8.6.597)]
+</div>
+
+---
+
+## High-resolution meltign analysis
+
+.panelset[
+.panel[.panel-name[Sequence alignment]
+.ecnter[<img src="73seqalign.jpg" style="zoom: 80%;">]
+]
+.panel[.panel-name[HRM]
+.center[<img src="74hrm.jpg" style="zoom:100%;">]
+]
+]
+
+???
+<img src="73seqalign.jpg" style="zoom: 45%;"><img src="74hrm.jpg" style="zoom:45%;">
+
+---
+
+# Droplet Digital PCR
+
+.center[<img src="75ddpcr.jpg" style="zoom: 60%;">]
+
+<div style="font-size:15px;">
+.footnote[
+DOI: [10.1002/cphg.58](http://doi.org/10.1002/cphg.58)]
+</div>
+
+---
+
+## Analysis tool
+
+.panelset[
+.panel[.panel-name[LightCycler480]
+
+<img src="35LC480software.jpg" style="zoom: 80%; position: absolute; top: 60pt; left: 250pt;">
+
+]
+.panel[.panel-name[Other analysis tools]
+
+<img src="37AnalysisPlatforms.jpg" style="zoom: 50%; position: absolute; top: 90pt; left: 400pt;" alt="Analysis platforms">
+
+]]
+
+<div style="font-size:10pt; position: absolute; bottom: 15pt;">
+Reference DOI:
+<a href="https://doi.org/10.1016/j.bdq.2014.08.002">10.1016/j.bdq.2014.08.002</a>
+</div>
+
+---
+class: center, middle
+
+# The MIQE guidelines
+
+---
+
+background-image: url("38atcrosspurpose.jpg")
+background-size: contain
+
+---
+
+background-image: url("39fun2.jpeg")
+background-size: cover
+
+---
+
+background-image: url("40Machines.jpg")
+background-size: contain
+class: bottom, left
+
+<div style="font-size: 15px;">
+.footnote[Reference DOI:<br> [10.1016/j.bdq.2015.01.005](http://dx.doi.org/10.1016/j.bdq.2015.01.005)]
+</div>
+
+???
+- 不同廠牌的機器，對於同一基因，在相同反應條件下，有不同的擴增效率
+- 同一台機器，對於不同基因，擴增效率也不見得都一致
+- 就算是同一台設備，對同一項基因檢測，也會發現其分佈零亂
+
+---
+background-image: url("41DifferentSystem.jpg")
+background-size: contain
+
+<div style="font-size: 15px;">
+.footnote[Reference DOI:<br> [10.1016/j.mcp.2010.04.002](http://dx.doi.org/10.1016/j.mcp.2010.04.002)]
+</div>
+
+---
+
+background-image: url("42DiffMelt.jpg")
+background-size: contain
+
+---
+## MIQE
+
+- <font style="color:red;">M</font>inimum <font style="color:red;">I</font>nformation for Publication of <font style="color:red;">Q</font>uantitative Real-Time PCR <font style="color:red;">E</font>xperiments, (2009)
+
+- Publication: 
+> [The MIQE Guidelines: Minimum Information for Publication of Quantitative Real-Time PCR Experiments](https://doi.org/10.1373/clinchem.2008.112797)
+
+- [MIQE & PCR (2016, Jun)](https://itunes.apple.com/us/book/miqe-qpcr/id993276375?mt=11)
+
+.center[<img src="43miqe.jpg" style="zoom:40%; border:0; border-radius: 10px; box-shadow:0 0 0;" alt="MIQE 2016">]
+
+---
+
+## Other guidelines and informations
+
+- 其他規範 real-time PCR 發表的指引
+> [Guidelines for validation of qualitative real-time PCR methods](https://doi.org/10.1016/j.tifs.2014.03.008)
+
+- 關於評估 real-time PCR 反應效率
+> [How good is a PCR efficiency estimate: Recommendations for precise and robust qPCR efficiency assessments](https://doi.org/10.1016/j.bdq.2015.01.005)
+
+- 決定檢測的極限範圍
+> [Evaluation of real-time PCR results at the limit of detection](https://doi.org/10.1007/s00003-011-0669-4)
+
+
+---
+class: center, middle
+
+# [LightCycler<sup>®</sup> 480 Instrument<br><font style="font-size:15px;">點按連結原廠網站</font>](https://lifescience.roche.com/en_tw/products/lightcycler14301-480-instrument-ii.html)
+
+---
+
+## General of LC480
+
+.pull-left[<img src="44LC480general.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="LC480 General">]
+
+.pull-right[.center[<img src="45LC480_1.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="LC480 front"><br>
+<img src="46LC480_fans.jpg" style="zoom:40%; border: 0; box-shadow:0 0 0;" alt="LC480_fans">]]
+
+???
+待機時產熱 900 kj/h
+運轉時產熱 4200 kj/h
+
+---
+## Enviroment parameters
+
+<img src="47LC480_EnviromentsParamaters.jpg" style="zoom:70%; position: absolute; z-index:3;left: 150pt;" alt="Environmental parameters">
+
+<img src="48loveearth.jpeg" style="zoom: 25%; position: absolute; z-index:1; bottom: 20pt; right: 80pt;">
+
+<div style="text-align:left; font-size: 25px; position: absolute; z-index: 7; bottom: 20pt;">
+<ul>
+<li style="color:red;">機器使用時，請將冷氣開啟，以維持溫度 (大約 26°C左右)。
+<li style="color:red;">冷氣開啟時，請注意隨手關門！
+</ul>
+</div>
+
+---
+
+## LightCycler<sup>®</sup> 480
+
+.panelset[
+
+.panel[.panel-name[設備外觀]
+
+.pull-left[.center[<img src="49LC480_2.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="LC480 外觀">]]
+.pull-right[.center[<img src="50LC480_light.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="LC480 light">]]
+
+]
+
+.panel[.panel-name[Plate loader]
+
+.pull-left[.center[<img src="51LC480_PlateLoader.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="plate loader 1"><img src="52LC480_Multiloader.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="plate loader 2">]]
+
+.pull-right[.center[<img src="53LC480_SampleCapicity.jpg" style="zoom:40%; border: 0; box-shadow:0 0 0;" alt="Sample capicity"><img src="54LC480_WhitePlate.jpg" style="zoom:30%; border: 0; box-shadow:0 0 0;" alt="Whit plate">]
+<font style="color:red; font-size:20px; font-weight:900;">限定使用Roche原廠耗材！<br>(盤子與封模，唯一限定的材料)]
+
+]
+
+.panel[.panel-name[Thermal cycler]
+
+.pull-left[.center[<img src="55ThermalCycler.jpg" style="zoom:80%; border: 0; box-shadow:0 0 0;" alt="Thermal cycler">]]
+.pull-right[.center[<img src="56LC480_ThermalBase.jpg" style="zoom:70%; border: 0; box-shadow:0 0 0;" alt="Thermal base">]]
+
+]
+
+.panel[.panel-name[Optical system]
+
+.pull-left[ 
+.center[<img src="57LC480_cartoon.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="LC480 cartoon">]]
+.pull-right[.center[<img src="58LC480_filters.jpg" style="zoom:50%; border: 0; box-shadow:0 0 0;" alt="LC480 filters">]]
+
+.panel[.panel-name[Filter set]
+
+.pull-left[
+.center[<img src="59LC480_filterset.jpg" style="zoom:90%;" alt="Filter set">]
+]
+.pull-right[
+.center[<img src="60LC480_DetectionFormats.jpg", style="width: 400pt; height: 200pt;" alt="Filter set II">]
+- 一定要注意 dye 的選用搭配哦！
+]]]]
+
+
+???
+白盤耗材 台中銷售商：永馥  
+TEL：04-22362138  
+LightCycler® 480 Multiwell Plate 96, white (白盤)  
+Product No. 04729692001  
+Pack Size: 50 plates with foils (50 盤含封膜)  
+其他耗材亦可參考原廠網站
+
+
+其他波段資料 [[Bio-rad 連結](https://www.bio-rad.com/webroot/web/images/lsr/products/amplification_pcr/product_overlay_content/global/lsr_384_excite_emiss_wave.jpg)] 
+
+---
+
+## LightCycler<sup>®</sup> 480 - Xenon lamp (氙)
+
+.center[<img src="61LC480_XenonLamp.jpg" style="box-shadow:0 0 0; border:0;" alt="Xenon lamp">]
+
+---
+
+## 請大家共同遵守這些事
+
+.pull-left[
+<ul style="font-size: 20pt;">
+<li> 使用前登記，安排實驗次序。
+<li> 注意空調，維持機器運作時的室內溫度
+<li> 限定使用原廠白盤及封膜！<br>(未遵守者禁止使用)
+<li> 請算好操作的時間，不要開著機器燒！<br>(燈泡滿貴的)
+<li> 如果有問題，請和實驗室前輩/學長姊討論。
+</ul>
+]
+
+.pull-right[
+<font style="font-size: 20pt;">
+ 使用中，如果遇到設備故障，請聯絡原廠工程師，並且請轉知所上老師。 
+<ul>
+  <li> <b style="color: red;">上班時間</b>維修專線 (Mon-Fri, 8:45~17:30)
+  <li> 0800-258-458
+  <li> <b style="color:red;">非上班時間</b>維修專線
+  <li> 北區 0928-256-624
+  <li> 中區 0910-387-746
+  <li> 南區 0910-387-748
+  </ul>
+</font>
+]
+
+---
+class: center, middle
+
+# <b style="color: #66a3ff;">Thank you!</b>
+
