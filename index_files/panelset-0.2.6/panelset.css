@@ -7,14 +7,14 @@
   --panel-tabs-sideways-max-width: 25%;
   --panel-tab-foreground: currentColor;
   --panel-tab-background: unset;
-  --panel-tab-active-foreground: currentColor;
+  --panel-tab-active-foreground: #0051BA;
   --panel-tab-active-background: unset;
-  --panel-tab-hover-foreground: currentColor;
+  --panel-tab-hover-foreground: #d22;
   --panel-tab-hover-background: unset;
   --panel-tab-active-border-color: currentColor;
   --panel-tab-hover-border-color: currentColor;
-  --panel-tab-inactive-opacity: 0.5;
-  --panel-tab-font-family: inherit;
+  --panel-tab-inactive-opacity: 0.3;
+  --panel-tab-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
 .panelset * {
